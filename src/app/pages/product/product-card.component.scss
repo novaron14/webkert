@@ -1,0 +1,16 @@
+img {
+  width: calc(100% + 32px);
+  margin-left: -16px;
+}
+.money{
+  font-weight: bold;
+}
+mat-card {
+  height: max-content;
+}
+
+mat-card-content div {
+  white-space: nowrap;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+}

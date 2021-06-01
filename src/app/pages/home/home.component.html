@@ -1,0 +1,48 @@
+<span [ngSwitch]="page">
+  <span *ngSwitchCase="'home'">
+    <app-nav [selectedCategory]="category" [categories]="categories" (callSelectC)="onSelect($event)" (callSelectPage)="page=$event"></app-nav>
+    <span [ngSwitch]="category">
+      <span *ngSwitchCase="'product'" class="container">
+        <app-product-card *ngFor="let item of products | async" [product]="item" (getProduct)="goToDetails($event)" (callFav)="onFavorite($event)" ></app-product-card>
+        <button mat-fab class="action-btn" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+
+
+      </span>
+      <span *ngSwitchCase="'order'" class="container">
+        <app-order-card></app-order-card>
+        <button mat-fab class="action-btn" (click)="openDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </span>
+
+      <span *ngSwitchCase="'favorite'" class="container">
+
+        <app-favorite-card  *ngFor="let favorite of favorites" [favorite]="favorite"></app-favorite-card>
+      </span>
+      <span *ngSwitchCase="'order'" class="container">
+
+        <app-order-card  *ngFor="let order of orders" [order]="order"></app-order-card>
+      </span>
+      <span *ngSwitchDefault class="container">
+        <app-splash-screen [categories]="categories" (callSelectC)="onSelect($event)"></app-splash-screen>
+
+
+      </span>
+
+    </span>
+  </span>
+
+  <span *ngSwitchCase="'registration'">
+    <app-registration (callSelectPage)="page=$event"></app-registration>
+  </span>
+
+  <span *ngSwitchCase="'details'">
+    <app-details [getProduct]="detailData"></app-details>
+  </span>
+
+  <span *ngSwitchDefault>
+    <app-login (callSelectPage)="page=$event"></app-login>
+  </span>
+</span>

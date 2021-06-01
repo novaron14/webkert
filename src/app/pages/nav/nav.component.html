@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a mat-button (click)="select('')">
+     Ordering API
+    </a>
+    <button mat-button *ngFor="let item of categories" (click)="select(item.value)">
+      {{item.title}}&nbsp;
+      <mat-icon>{{item.icon}}</mat-icon>
+    </button>
+    <span style="flex: 1 1;"></span>
+    <button mat-button [matMenuTriggerFor]="menu">
+      Opciók&nbsp;
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="callSelectPage.emit('')">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Kijelentkezés</span>
+      </button>
+    </mat-menu>
+
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <span class="splash-title">{{sCategoryTitle}}</span>
+  </mat-toolbar-row>
+</mat-toolbar>

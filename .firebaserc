@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ordering-api-a12fe"
+  },
+  "targets": {
+    "ordering-api-a12fe": {
+      "hosting": {
+        "webkert": [
+          "ordering-api-a12fe"
+        ]
+      }
+    }
+  }
+}
